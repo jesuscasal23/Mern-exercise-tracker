@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Navbar from "./components/navbar";
+import CreateExercise from "./components/createExercise";
+import CreateUser from "./components/createUser";
+import EditExercise from "./components/editExercise";
+import ExercisesList from "./components/exercisesList";
 
 function App() {
+  //
+  //const apiCall()
+
+  // const [state, setState] = useState()
+
+  //useEffect(() => {
+  //  const is = {subscribed: true}
+
+  //  apiCall().then(res => if(is.subscribed) setState(res))
+  //  return () => {
+  //    return is.subscribed = false
+  //  }
+  //}, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Route path="/" exact component={ExercisesList} />
+      <Route path="/edit/:id" component={EditExercise} />
+      <Route path="/create" component={CreateExercise} />
+      <Route path="/user" component={CreateUser} />
+    </Router>
   );
 }
 
